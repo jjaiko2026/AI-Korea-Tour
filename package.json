@@ -1,0 +1,44 @@
+{
+  "name": "triptube-ai",
+  "version": "2.6.0",
+  "private": true,
+  "description": "TripTube AI - YouTube/블로그 여행 정보를 AI가 정리해 실행 가능한 여행 일정으로 만드는 웹앱",
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint .",
+    "typecheck": "tsc --noEmit",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate",
+    "db:studio": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "next": "16.3.1",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "@clerk/nextjs": "7.7.6",
+    "ai": "7.0.66",
+    "@ai-sdk/react": "4.0.69",
+    "@ai-sdk/anthropic": "4.0.39",
+    "@ai-sdk/google": "4.0.44",
+    "zod": "4.4.3",
+    "drizzle-orm": "0.45.2",
+    "@neondatabase/serverless": "1.1.0",
+    "recharts": "3.10.1",
+    "clsx": "2.1.1",
+    "tailwind-merge": "3.0.2",
+    "lucide-react": "0.469.0"
+  },
+  "devDependencies": {
+    "typescript": "5.7.3",
+    "@types/node": "22.10.5",
+    "@types/react": "19.0.7",
+    "@types/react-dom": "19.0.3",
+    "tailwindcss": "4.3.3",
+    "@tailwindcss/postcss": "4.3.3",
+    "drizzle-kit": "0.31.10",
+    "eslint": "9.18.0",
+    "eslint-config-next": "16.3.1"
+  }
+}
