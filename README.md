@@ -34,7 +34,7 @@ npm run dev
 | §21 | 결과 화면 | `src/app/plan/result/[id]/page.tsx` |
 | §22, §45 | 데이터 모델 전체 | `src/db/schema.ts` |
 | §23, §37-38 | 앱 내부 타입 / Trip Data Contract / Content Brief | `src/types/*` |
-| §34-35, §53-54 | Admin 인증·권한·대시보드·분석 | `src/middleware.ts`, `src/lib/admin/auth.ts`, `src/app/admin/*` |
+| §34-35, §53-54 | Admin 인증·권한·대시보드·분석 | `src/proxy.ts`, `src/lib/admin/auth.ts`, `src/app/admin/*` |
 | §36 | 사용자 행동 이벤트 | `src/app/api/events/route.ts` |
 | §39-45 | Content AI(Blog/YouTube/Shorts) 파이프라인 / Content Job | `src/lib/content/*`, `src/app/api/admin/content/*` |
 | §46, §46.1 | 내부/TourAPI API 경계 | `src/app/api/trips/*`, `src/app/api/tour/*`, `src/app/api/admin/content/*` |
@@ -48,6 +48,18 @@ npm run dev
   해석되고, 애플리케이션 코드는 `src/types`의 Internal Model만 사용합니다.
 - **사용자 데이터 ≠ 콘텐츠 자동 발행**: `/admin/content/*`에서만 Content Job을
   생성할 수 있고(Rule 9, 10), 발행은 관리자 승인 이후 별도 단계입니다.
+
+## TripTubeAI 연동 (별도 저장소/웹앱)
+
+이 저장소(AI-Korea-Tour)는 이미 별도로 존재하는 TripTubeAI 웹앱/저장소와 나중에
+합쳐질 예정입니다. TripTubeAI 쪽 API에서 데이터를 받아와 이 저장소 위에서 확장하는
+구조로, 실제 데이터 종류(일정/장소/사용자 등)와 엔드포인트 스펙은 아직 미정입니다.
+
+- 연동 인터페이스: `src/lib/integrations/triptubeai/client.ts` (다른 Provider와
+  동일한 패턴 — 설정이 없으면 명시적으로 실패하고 데이터를 지어내지 않음)
+- 설정: `.env.example`의 `TRIPTUBEAI_API_BASE_URL` / `TRIPTUBEAI_API_KEY`
+- TripTubeAI의 실제 API 명세가 정해지면 `client.ts`에 구체 메서드
+  (`fetchItineraries()` 등)를 추가하면 됩니다.
 
 ## 스캐폴드 범위 — 실제 서비스로 가기 전 채워야 할 것
 
